@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/27 10:57:40 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/27 11:17:06 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		main(int argc, char **argv)
 	mlx_key_hook(env.win, key_hook, &env);
 //	mlx_expose_hook(env.win, expose, &env);
 	mlx_hook(env.win, 17, 0L, &close_window, &env);
+	mlx_mouse_hook(env.win, &mouse_hook, &env);
 	mlx_loop(env.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/27 09:57:05 by daviwel           #+#    #+#              #
-#    Updated: 2016/09/27 10:54:00 by daviwel          ###   ########.fr        #
+#    Updated: 2016/09/27 11:19:27 by daviwel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAG = -Wall -Werror -Wextra
 SRC_FILES = main.c \
 			close_window.c \
 			key_hook.c \
-			draw_fractal.c
+			draw_fractal.c \
+			mouse_hook.c
 
 SRC = $(addprefix srcs/, $(SRC_FILES))
 

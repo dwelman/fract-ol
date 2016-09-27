@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/27 10:53:45 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/27 11:28:33 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define WIN_X 1280
 # define WIN_Y 720
 # define EXIT 53
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 # define MANDELBROT 1
 # define JULIA 2
 
@@ -46,5 +48,7 @@ void			draw_fractal(t_env *env, int code);
 int				key_hook(int key, t_env *env);
 
 int				close_window(t_env *env);
+
+int				mouse_hook(int key, int x, int y, t_env *env);
 
 #endif
