@@ -14,6 +14,8 @@
 
 void	draw_fractal(t_env *env, int code)
 {
+	mandelbrot(env);
+	return ;
 	(void)env;
 	(void)code;
 }

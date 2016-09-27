@@ -16,13 +16,20 @@
 # include <libc.h>
 # include <math.h>
 # include <libft.h>
-# define WIN_X 1280
-# define WIN_Y 720
+# define WIN_X 512
+# define WIN_Y 512
 # define EXIT 53
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 # define MANDELBROT 1
 # define JULIA 2
+
+typedef struct	s_col
+{
+	float	r;
+	float	g;
+	float	b;
+}				t_col;
 
 typedef struct	s_img
 {
@@ -40,15 +47,30 @@ typedef struct	s_env
 {
 	void		*mlx;
 	void		*win;
+	double		min_r;
+	double		max_r;
+	double		min_i;
+	double		max_i;
+	double		cr;
+	double		ci;
+	int			max_n;
 	t_img		img;
+	int			win_x;
+	int			win_y;
+	int			wheel_x;
+	int			wheel_y;
 }				t_env;
 
 void			draw_fractal(t_env *env, int code);
+
+void			mandelbrot(t_env *env);
 
 int				key_hook(int key, t_env *env);
 
 int				close_window(t_env *env);
 
 int				mouse_hook(int key, int x, int y, t_env *env);
+
+void			save_to_img(t_env *env, t_col col, int x, int y);
 
 #endif

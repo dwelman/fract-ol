@@ -18,7 +18,9 @@ SRC_FILES = main.c \
 			close_window.c \
 			key_hook.c \
 			draw_fractal.c \
-			mouse_hook.c
+			mouse_hook.c \
+			mandelbrot.c \
+			save_to_img.c \
 
 SRC = $(addprefix srcs/, $(SRC_FILES))
 

@@ -16,6 +16,7 @@ int		expose(t_env *env)
 {
 	if (env->win && env->img.img)
 	{
+		ft_printf("exposing");
 		mlx_clear_window(0, env->win);
 		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	}
@@ -50,6 +51,8 @@ int		main(int argc, char **argv)
 	int		code;
 
 	code = arg_check(argc, argv);
+	env.win_x = WIN_X;
+	env.win_y = WIN_Y;
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "Fract-ol");
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
@@ -57,9 +60,9 @@ int		main(int argc, char **argv)
 		&env.img.s, &env.img.e);
 	draw_fractal(&env, code);
 	mlx_key_hook(env.win, key_hook, &env);
-//	mlx_expose_hook(env.win, expose, &env);
-	mlx_hook(env.win, 17, 0L, &close_window, &env);
-	mlx_mouse_hook(env.win, &mouse_hook, &env);
+	mlx_expose_hook(env.win, expose, &env);
+	//mlx_hook(env.win, 17, 0L, &close_window, &env);
+	//mlx_mouse_hook(env.win, &mouse_hook, &env);
 	mlx_loop(env.mlx);
 	return (0);
 }
