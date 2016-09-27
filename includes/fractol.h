@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/27 09:38:59 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/09/27 10:53:45 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # define EXIT 53
 # define MANDELBROT 1
 # define JULIA 2
-
-//many many functions
 
 typedef struct	s_img
 {
@@ -43,9 +41,10 @@ typedef struct	s_env
 	t_img		img;
 }				t_env;
 
+void			draw_fractal(t_env *env, int code);
+
 int				key_hook(int key, t_env *env);
+
 int				close_window(t_env *env);
-
-
 
 #endif
