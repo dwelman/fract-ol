@@ -12,40 +12,11 @@
 
 #include <fractol.h>
 
-int		expose(t_env *env)
+int	close_window(t_env *env)
 {
-	if (env->win && env->img.img)
-	{
-		mlx_clear_window(0, env->win);
-		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
-	}
-	return (0);
-}
-
-void	arg_check(int argc, char **argv)
-{
-	(void)argv;
-	if (argc != 2)
-	{
-		ft_putstr_fd("Please include an option : fractol [option]\n	[1] = Mandelbrot , [2] = Julia\n", 2);
-		exit(-1);
-	}
-}
-
-int		main(int argc, char **argv)
-{
-//	(void)argc;
-//	(void)argv;
-	t_env	env;
-	arg_check(argc, argv);
-	env.mlx = mlx_init();
-	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "Fract-ol");
-	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
-	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
-		&env.img.s, &env.img.e);
-	mlx_key_hook(env.win, key_hook, &env);
-//	mlx_expose_hook(env.win, expose, &env);
-	mlx_hook(env.win, 17, 0L, &close_window, &env);
-	mlx_loop(env.mlx);
+	(void)env;
+	//Add memory cleanup!
+	//mlx_destroy_window(env->mlx, env->img.img);
+	exit(0);
 	return (0);
 }

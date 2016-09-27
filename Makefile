@@ -14,7 +14,9 @@ NAME = fractol
 
 CFLAG = -Wall -Werror -Wextra
 
-SRC_FILES = main.c
+SRC_FILES = main.c \
+			close_window.c \
+			key_hook.c
 
 SRC = $(addprefix srcs/, $(SRC_FILES))
 
@@ -27,11 +29,11 @@ LIBRARY = -lmlx -L libft/ -lft -framework OpenGL -framework AppKit
 all: $(NAME)
 
 $(NAME):
-	@make -C libft/ re
+#	@make -C libft/ re
 	@clang $(CFLAG) $(INCLUDES) -c $(SRC)
 	@echo "OBJECTS COMPILED"
 	@/bin/mv *.o srcs
-	@clang $(CFLAG) -o $(NAME) $(OBJ) $(ATTACH)
+	@clang $(CFLAG) -o $(NAME) $(OBJ) $(LIBRARY)
 	@echo "PROGRAM COMPILED"
 
 clean:
