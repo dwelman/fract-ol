@@ -20,8 +20,8 @@ int	mouse_hook(int key, int x, int y, t_env *env)
 	if (key == SCROLL_DOWN)
 	{
 		env->zoom /= 1.2;
-		env->move_x -= relx / (env->win_x * env->zoom);
-		env->move_y -= rely / (env->win_y * env->zoom);
+		env->move_x -= relx / ((env->win_x) * (env->zoom / 2));
+		env->move_y -= rely / ((env->win_y) * (env->zoom / 2));
 	}
 	else if (key == SCROLL_UP)
 	{

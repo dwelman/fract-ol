@@ -19,14 +19,11 @@ void	julia(t_fr_thread *t)
 	double	new_imag;
 	double	old_real;
 	double	old_imag;
-	//t_col	col;
 	int		i;
 	int		max_iter = 255;
 	int		x = 0;
 
 	env = t->env;
-//	c_real = -0.7;
-//	c_imag = 0.27015;
 	env->c_real = env->mapped_point_x;
 	env->c_imag = env->mapped_point_y;
 	while (t->y_s < t->y_e)
