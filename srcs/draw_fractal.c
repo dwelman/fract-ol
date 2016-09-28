@@ -18,7 +18,7 @@ void	*draw_fractal(void *t)
 
 	temp = (t_fr_thread*)t;
 	if (temp->env->code == 1)
-		mandelbrot(temp->env);
+		mandelbrot((t_fr_thread*)t);
 	else if (temp->env->code == 2)
 	{
 		julia((t_fr_thread*)t);

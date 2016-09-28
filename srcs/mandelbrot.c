@@ -12,7 +12,7 @@
 
 #include <fractol.h>
 
-void	mandelbrot(t_env *env)
+void	mandelbrot(t_fr_thread *t)
 {
 	double	new_real;
 	double	new_imag;
@@ -20,20 +20,21 @@ void	mandelbrot(t_env *env)
 	double	old_imag;
 	t_col	col;
 	int		i;
-	int		max_iter = 500;
-	int		x = 0;
-	int		y = 0;
+	int		max_iter = 255;
+	int		x;
 	double	p_real;
 	double	p_imag;
+	t_env	*env;
 
-	while (y < WIN_Y)
+	env = t->env;
+	while (t->y_s < t->y_e)
 	{
-		x = 0;
-		while (x < WIN_X)
+		x = t->x_s;
+		while (x < t->x_e)
 		{
 			//printf("y = %d, x = %d\n", y, x);
 			p_real = 1.5 * (x - WIN_X / 2) / (0.5 * env->zoom * WIN_X) + env->move_x;
-			p_imag = (y - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + env->move_y;
+			p_imag = (t->y_s - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + env->move_y;
 			new_real = new_imag = old_real = old_imag = 0;
 			//printf("new real = %f, new imag = %f\n", new_real, new_imag);
 			i = 0;
@@ -51,9 +52,9 @@ void	mandelbrot(t_env *env)
 			col.r = i % 256;
 			col.g = i % 256;
 			col.b = i % 256;
-			save_to_img(env, col, x, y);
+			save_to_img(env, col, x, t->y_s);
 			x++;
 		}
-		y++;
+		t->y_s++;
 	}
 }

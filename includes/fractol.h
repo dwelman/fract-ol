@@ -97,7 +97,7 @@ int				mouse_move(int x, int y, t_env *env);
 
 void			*draw_fractal(void *e);
 
-void			mandelbrot(t_env *env);
+void			mandelbrot(t_fr_thread *t);
 
 void			julia(t_fr_thread *t);
 
