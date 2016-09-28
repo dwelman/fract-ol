@@ -52,6 +52,8 @@ int		main(int argc, char **argv)
 
 	code = arg_check(argc, argv);
 	env.zoom = 1;
+	env.win_x = WIN_X;
+	env.win_y = WIN_Y;
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "Fract-ol");
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
@@ -61,6 +63,7 @@ int		main(int argc, char **argv)
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_hook(env.win, 17, 0L, &close_window, &env);
+	mlx_hook(env.win, 6, 1L<<6, &mouse_move, &env);
 	mlx_mouse_hook(env.win, &mouse_hook, &env);
 	mlx_loop(env.mlx);
 	return (0);

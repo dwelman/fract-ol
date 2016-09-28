@@ -59,8 +59,16 @@ typedef struct	s_env
 	int			i_y_max;
 	int			wheel_x;
 	int			wheel_y;
+	int			point_x;
+	int			point_y;
+	double		mapped_point_x;
+	double		mapped_point_y;
+	int			win_x;
+	int			win_y;
 	double		zoom;
 }				t_env;
+
+int				mouse_move(int x, int y, t_env *env);
 
 void			draw_fractal(t_env *env, int code);
 
