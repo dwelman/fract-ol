@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 13:40:43 by daviwel           #+#    #+#             */
+/*   Updated: 2016/09/28 08:17:59 by daviwel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fractol.h>
 
 double map_to_real(int x, double min_r, double max_r)
@@ -49,10 +61,10 @@ void	mandelbrot(t_env *env)
 	env->min_i = -1.0;
 	y = 0;
 	col = (t_col){0.0, 0.0, 0.0};
-	while (y < env->win_y)
+	while (y < WIN_Y)
 	{
 		x = 0;
-		while (x < env->win_x)
+		while (x < WIN_X)
 		{
 			env->cr = map_to_real(x, env->min_r, env->max_r);
 			env->ci = map_to_imaginary(y, env->min_i, env->max_i);

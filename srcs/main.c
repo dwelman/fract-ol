@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/27 11:17:06 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 08:18:16 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int		main(int argc, char **argv)
 	int		code;
 
 	code = arg_check(argc, argv);
-	env.win_x = WIN_X;
-	env.win_y = WIN_Y;
+	env.zoom = 1;
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "Fract-ol");
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
@@ -61,8 +60,8 @@ int		main(int argc, char **argv)
 	draw_fractal(&env, code);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);
-	//mlx_hook(env.win, 17, 0L, &close_window, &env);
-	//mlx_mouse_hook(env.win, &mouse_hook, &env);
+	mlx_hook(env.win, 17, 0L, &close_window, &env);
+	mlx_mouse_hook(env.win, &mouse_hook, &env);
 	mlx_loop(env.mlx);
 	return (0);
 }

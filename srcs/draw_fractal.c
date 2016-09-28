@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 10:51:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/27 10:57:23 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 07:54:58 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	draw_fractal(t_env *env, int code)
 {
-	mandelbrot(env);
+	//mandelbrot(env);
+	julia(env);
 	return ;
 	(void)env;
 	(void)code;

@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/27 11:28:33 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 08:17:53 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <libc.h>
 # include <math.h>
 # include <libft.h>
-# define WIN_X 512
-# define WIN_Y 512
+# define WIN_X 640
+# define WIN_Y 640
 # define EXIT 53
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
@@ -55,13 +55,16 @@ typedef struct	s_env
 	double		ci;
 	int			max_n;
 	t_img		img;
-	int			win_x;
-	int			win_y;
+	int			i_x_max;
+	int			i_y_max;
 	int			wheel_x;
 	int			wheel_y;
+	double		zoom;
 }				t_env;
 
 void			draw_fractal(t_env *env, int code);
+
+void			julia(t_env *env);
 
 void			mandelbrot(t_env *env);
 
