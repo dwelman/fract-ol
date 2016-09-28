@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 07:37:52 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 09:26:50 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 09:28:38 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	julia(t_env *env)
 	double	new_imag;
 	double	old_real;
 	double	old_imag;
-	double	move_x = 0;
-	double	move_y = 0;
 	t_col	col;
 	int		i;
 	int		max_iter = 500;
@@ -34,8 +32,8 @@ void	julia(t_env *env)
 		while (x < WIN_X)
 		{
 			//printf("y = %d, x = %d\n", y, x);
-			new_real = 1.5 * (x - WIN_X / 2) / (0.5 * env->zoom * WIN_X) + move_x;
-			new_imag = (y - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + move_y;
+			new_real = 1.5 * (x - WIN_X / 2) / (0.5 * env->zoom * WIN_X) + env->move_x;
+			new_imag = (y - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + env->move_y;
 			//printf("new real = %f, new imag = %f\n", new_real, new_imag);
 			i = 0;
 			while (i < max_iter)

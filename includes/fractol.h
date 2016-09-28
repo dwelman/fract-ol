@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/28 09:24:57 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 09:27:58 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct	s_env
 	double		max_i;
 	double		c_real;
 	double		c_imag;
+	double		move_x;
+	double		move_y;
 	int			max_n;
 	t_img		img;
 	int			i_x_max;

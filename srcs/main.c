@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 08:18:16 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 09:29:06 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		main(int argc, char **argv)
 
 	code = arg_check(argc, argv);
 	env.zoom = 1;
+	env.move_x = 0;
+	env.move_y = 0;
 	env.win_x = WIN_X;
 	env.win_y = WIN_Y;
 	env.mlx = mlx_init();
