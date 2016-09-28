@@ -54,6 +54,10 @@ int		main(int argc, char **argv)
 	env.zoom = 1;
 	env.win_x = WIN_X;
 	env.win_y = WIN_Y;
+	env.rel_x = 0;
+	env.rel_y = 0;
+	env.mapped_point_x = -0.7;
+	env.mapped_point_y = 0.27015;
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "Fract-ol");
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);

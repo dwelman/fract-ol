@@ -47,12 +47,10 @@ void	map_mouse(t_env *env, double range_min, double range_max)
 	double range;
 
 	range = range_max - range_min;
-	printf("range = %f\n", range);
 	if (range < 0)
 		range = 1.0F;
-	printf("mapped_point_x = (%d / %d) * %F\n", env->point_x, env->win_x, range);
-	env->mapped_point_x = ((double)env->point_x / (double)env->win_x) * range;
-	env->mapped_point_y = ((double)env->point_y / (double)env->win_y) * range;
+	env->mapped_point_x = range_min + ((double)env->point_x / (double)env->win_x) * range;
+	env->mapped_point_y = range_min + ((double)env->point_y / (double)env->win_y) * range;
 
 }
 
@@ -61,14 +59,15 @@ int		mouse_move(int x, int y, t_env *env)
 	if (x <= env->win_x && x >= 0
 		&& y <= env->win_y && y >= 0)
 	{
-		env->point_x = x;
-		env->point_y = y;
+		env->point_x = x * 1 / env->zoom;
+		env->point_y = y * 1 / env->zoom;
 		map_mouse(env, -1.0F, 1.0F);
 		mlx_destroy_image(env->mlx, env->img.img);
 		env->img.img = mlx_new_image(env->mlx, env->win_x, env->win_y);
 		env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp,
 		&env->img.s, &env->img.e);
 		draw_fractal(env, 1);
+		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 		printf("x = %F, y = %F\n", env->mapped_point_x, env->mapped_point_y);
 	}
 	return 0;

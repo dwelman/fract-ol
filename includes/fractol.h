@@ -65,6 +65,8 @@ typedef struct	s_env
 	double		mapped_point_y;
 	int			win_x;
 	int			win_y;
+	int			rel_x;
+	int			rel_y;
 	double		zoom;
 }				t_env;
 

@@ -24,12 +24,14 @@ void	julia(t_env *env)
 	double	move_y = 0;
 	t_col	col;
 	int		i;
-	int		max_iter = 500;
+	int		max_iter = 255;
 	int		x = 0;
 	int		y = 0;
 
-	c_real = -0.7;
-	c_imag = 0.27015;
+//	c_real = -0.7;
+//	c_imag = 0.27015;
+	c_real = env->mapped_point_x; //* env->zoom;
+	c_imag = env->mapped_point_y; //* env->zoom;
 	while (y < WIN_Y)
 	{
 		x = 0;
