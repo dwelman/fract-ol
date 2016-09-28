@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 11:17:21 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 10:05:44 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 11:07:09 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,25 @@ int	mouse_hook(int key, int x, int y, t_env *env)
 	printf("BUTTON: %d\n", key);
 	printf("x : %d, y : %d\n", x, y);
 	(void)env;
+	if (x <= env->win_x && x >= 0
+			 && y <= env->win_y && y >= 0)
+	{
+		env->point_x = x * 1 / env->zoom;
+		env->point_y = y * 1 / env->zoom;
+		map_mouse(env, -1.0F, 1.0F);
+		
+	}
 	if (key == SCROLL_DOWN)
 	{
-		env->wheel_x = x;
-		env->wheel_y = y;
-		env->zoom -= 0.5;
-		if (env->zoom == 0)
-			env->zoom = -0.5;
+		//env->move_x -= env->mapped_point_x;
+		//env->move_y -= env->mapped_point_y;
+		env->zoom /= 1.2;
 	}
 	else if (key == SCROLL_UP)
-	{
-		env->wheel_x = x;
-		env->wheel_y = y;
-		env->zoom += 0.5;
-		if (env->zoom == 0)
-			env->zoom = 0.5;
+	{	
+		//env->move_x += env->mapped_point_x;
+		//env->move_y += env->mapped_point_y;
+		env->zoom *= 1.2;
 	}
 	mlx_destroy_image(env->mlx, env->img.img);
 	env->img.img = mlx_new_image(env->mlx, WIN_X, WIN_Y);

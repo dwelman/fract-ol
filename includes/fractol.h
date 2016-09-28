@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/28 10:06:19 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:32:12 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct	s_env
 	int			rel_y;
 	double		zoom;
 }				t_env;
+
+void			map_mouse(t_env *env, double range_min, double range_max);
 
 int				mouse_move(int x, int y, t_env *env);
 
