@@ -14,24 +14,21 @@
 
 void	julia(t_fr_thread *t)
 {
-	ft_printf("a thread");
 	t_env	*env;
 	double	new_real;
 	double	new_imag;
 	double	old_real;
 	double	old_imag;
-	t_col	col;
+	//t_col	col;
 	int		i;
 	int		max_iter = 255;
 	int		x = 0;
 
-	
 	env = t->env;
 //	c_real = -0.7;
 //	c_imag = 0.27015;
 	env->c_real = env->mapped_point_x;
 	env->c_imag = env->mapped_point_y;
-
 	while (t->y_s < t->y_e)
 	{
 		x = t->x_s;
@@ -53,10 +50,7 @@ void	julia(t_fr_thread *t)
 				i++;
 			}
 			//ft_printf("I = %d\n", i);
-			col.r = i % 256;
-			col.g = i % 256;
-			col.b = i % 256;
-			save_to_img(env, col, x, t->y_s);
+			save_to_img(env, (t_col){i % 256, i % 256, i % 256}, x, t->y_s);
 			x++;
 		}
 		t->y_s++;

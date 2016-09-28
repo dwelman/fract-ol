@@ -15,10 +15,8 @@
 int	mouse_hook(int key, int x, int y, t_env *env)
 {
 	printf("BUTTON: %d\n", key);
-	printf("x : %d, y : %d\n", x, y);
 	double relx = x - (env->win_x / 2);
 	double rely = y - (env->win_y / 2);
-	printf("relx = %F relY = %F\n", relx, rely);
 	if (key == SCROLL_DOWN)
 	{
 		env->zoom /= 1.2;

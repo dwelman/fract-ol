@@ -14,8 +14,6 @@
 
 int	key_hook(int key, t_env *env)
 {
-	(void)env;
-	printf("key = %d", key);
 	if (key == EXIT)
 	{
 		//cleanup(env);
@@ -47,11 +45,6 @@ int	key_hook(int key, t_env *env)
 	{
 		env->lock_state = !env->lock_state;
 	}
-	mlx_destroy_image(env->mlx, env->img.img);
-    env->img.img = mlx_new_image(env->mlx, WIN_X, WIN_Y);
-    env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp,
-	        &env->img.s, &env->img.e);
-    draw_fractal(env);
-    mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
+	redraw(env);
 	return (0);
 }
