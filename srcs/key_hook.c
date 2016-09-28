@@ -43,6 +43,10 @@ int	key_hook(int key, t_env *env)
 		env->move_y = 0;
 		env->zoom = 1;
 	}
+	if (key == 17)
+	{
+		env->lock_state = !env->lock_state;
+	}
 	mlx_destroy_image(env->mlx, env->img.img);
     env->img.img = mlx_new_image(env->mlx, WIN_X, WIN_Y);
     env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp,

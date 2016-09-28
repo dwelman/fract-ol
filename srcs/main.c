@@ -45,25 +45,31 @@ int		arg_check(int argc, char **argv)
 	}
 }
 
+void	init_env(t_env *env)
+{
+	env->zoom = 1;
+	env->move_x = 0;
+	env->move_y = 0;
+	env->win_x = WIN_X;
+	env->win_y = WIN_Y;
+	env->rel_x = 0;
+	env->rel_y = 0;
+	env->mapped_point_x = -0.7;
+	env->mapped_point_y = 0.27015;
+	env->lock_state = 0;
+	env->mlx = mlx_init();
+	env->win = mlx_new_window(env->mlx, WIN_X, WIN_Y, "Fract-ol");
+	env->img.img = mlx_new_image(env->mlx, WIN_X, WIN_Y);
+	env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp,
+		&env->img.s, &env->img.e);
+}
+
 int		main(int argc, char **argv)
 {
 	t_env	env;
 
 	env.code = arg_check(argc, argv);
-	env.zoom = 1;
-	env.move_x = 0;
-	env.move_y = 0;
-	env.win_x = WIN_X;
-	env.win_y = WIN_Y;
-	env.rel_x = 0;
-	env.rel_y = 0;
-	env.mapped_point_x = -0.7;
-	env.mapped_point_y = 0.27015;
-	env.mlx = mlx_init();
-	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "Fract-ol");
-	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
-	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
-		&env.img.s, &env.img.e);
+	init_env(&env);
 	draw_fractal(&env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);

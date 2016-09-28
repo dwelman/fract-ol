@@ -16,6 +16,7 @@
 # include <libc.h>
 # include <math.h>
 # include <libft.h>
+# include <pthread.h>
 # define WIN_X 640
 # define WIN_Y 640
 # define EXIT 53
@@ -23,6 +24,7 @@
 # define SCROLL_DOWN 5
 # define MANDELBROT 1
 # define JULIA 2
+
 
 typedef struct	s_col
 {
@@ -71,7 +73,10 @@ typedef struct	s_env
 	int			rel_x;
 	int			rel_y;
 	double		zoom;
+	int			lock_state;
 }				t_env;
+
+void			redraw(t_env *env);
 
 void			map_mouse(t_env *env, double range_min, double range_max);
 

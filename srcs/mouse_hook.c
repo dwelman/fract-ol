@@ -16,37 +16,33 @@ int	mouse_hook(int key, int x, int y, t_env *env)
 {
 	printf("BUTTON: %d\n", key);
 	printf("x : %d, y : %d\n", x, y);
+	double relx = x - (env->win_x / 2);
+	double rely = y - (env->win_y / 2);
+	printf("relx = %F relY = %F\n", relx, rely);
 	if (key == SCROLL_DOWN)
 	{
-		//env->move_x -= env->mapped_point_x;
-		//env->move_y -= env->mapped_point_y;
 		env->zoom /= 1.2;
+		env->move_x -= relx / (env->win_x * env->zoom);
+		env->move_y -= rely / (env->win_y * env->zoom);
 	}
 	else if (key == SCROLL_UP)
-	{	
-		//env->move_x += env->mapped_point_x;
-		//env->move_y += env->mapped_point_y;
+	{
 		env->zoom *= 1.2;
+		env->move_x += relx / (env->win_x * env->zoom);
+		env->move_y += rely / (env->win_y * env->zoom);
 	}
-	mlx_destroy_image(env->mlx, env->img.img);
-	env->img.img = mlx_new_image(env->mlx, WIN_X, WIN_Y);
-	env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp,
-		&env->img.s, &env->img.e);
-	draw_fractal(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
+	redraw(env);
 	return (0);
 }
 
 void	map_mouse(t_env *env, double range_min, double range_max)
 {
 	double range;
-
 	range = range_max - range_min;
 	if (range < 0)
 		range = 1.0F;
 	env->mapped_point_x = range_min + ((double)env->point_x / (double)env->win_x) * range;
 	env->mapped_point_y = range_min + ((double)env->point_y / (double)env->win_y) * range;
-
 }
 
 int		mouse_move(int x, int y, t_env *env)
@@ -55,7 +51,7 @@ int		mouse_move(int x, int y, t_env *env)
 	static int	oldy = 0;
 
 	if (x <= env->win_x && x >= 0
-		&& y <= env->win_y && y >= 0)
+		&& y <= env->win_y && y >= 0 && !env->lock_state)
 	{
 		if (env->zoom == 1)
 		{
@@ -64,7 +60,6 @@ int		mouse_move(int x, int y, t_env *env)
 		}
 		else 
 		{
-			printf("diff = %d\n", oldx - x);
 			if ((float)abs(oldx - x) >= env->zoom * 2.0)
 			{
 				env->point_x = (oldx - x > 0) ?
@@ -79,13 +74,7 @@ int		mouse_move(int x, int y, t_env *env)
 			}
 		}
 		map_mouse(env, -1.0F, 1.0F);
-		mlx_destroy_image(env->mlx, env->img.img);
-		env->img.img = mlx_new_image(env->mlx, env->win_x, env->win_y);
-		env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp,
-		&env->img.s, &env->img.e);
-		draw_fractal(env);
-		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
-		printf("x = %F, y = %F\n", env->mapped_point_x, env->mapped_point_y);
+		redraw(env);
 	}
 	return (0);
 }
