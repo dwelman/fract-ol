@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 09:29:06 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:05:16 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ int		arg_check(int argc, char **argv)
 int		main(int argc, char **argv)
 {
 	t_env	env;
-	int		code;
 
-	code = arg_check(argc, argv);
+	env.code = arg_check(argc, argv);
 	env.zoom = 1;
 	env.move_x = 0;
 	env.move_y = 0;
@@ -65,7 +64,7 @@ int		main(int argc, char **argv)
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
 	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
 		&env.img.s, &env.img.e);
-	draw_fractal(&env, code);
+	draw_fractal(&env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_hook(env.win, 17, 0L, &close_window, &env);

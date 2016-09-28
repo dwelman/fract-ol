@@ -6,16 +6,16 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 10:51:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 09:25:02 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:06:30 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	draw_fractal(t_env *env, int code)
+void	draw_fractal(t_env *env)
 {
-	julia(env);
-	return ;
-	(void)env;
-	(void)code;
+	if (env->code == 1)
+		mandelbrot(env);
+	else if (env->code == 2)
+		julia(env);
 }
