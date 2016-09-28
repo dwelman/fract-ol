@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 10:51:50 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/27 10:58:41 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 09:24:10 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ int	key_hook(int key, t_env *env)
 	{
 		//cleanup(env);
 		exit(0);
+	}
+	if (key == 123) //LEFT
+	{
+		
+	}
+	if (key == 124) //RIGHT
+	{
+
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/28 08:17:53 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 09:27:58 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ typedef struct	s_env
 	double		max_r;
 	double		min_i;
 	double		max_i;
-	double		cr;
-	double		ci;
+	double		c_real;
+	double		c_imag;
+	double		move_x;
+	double		move_y;
 	int			max_n;
 	t_img		img;
 	int			i_x_max;
@@ -75,8 +77,6 @@ int				mouse_move(int x, int y, t_env *env);
 void			draw_fractal(t_env *env, int code);
 
 void			julia(t_env *env);
-
-void			mandelbrot(t_env *env);
 
 int				key_hook(int key, t_env *env);
 
