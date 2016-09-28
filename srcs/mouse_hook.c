@@ -16,15 +16,6 @@ int	mouse_hook(int key, int x, int y, t_env *env)
 {
 	printf("BUTTON: %d\n", key);
 	printf("x : %d, y : %d\n", x, y);
-	(void)env;
-	if (x <= env->win_x && x >= 0
-			 && y <= env->win_y && y >= 0)
-	{
-		env->point_x = x * 1 / env->zoom;
-		env->point_y = y * 1 / env->zoom;
-		map_mouse(env, -1.0F, 1.0F);
-		
-	}
 	if (key == SCROLL_DOWN)
 	{
 		//env->move_x -= env->mapped_point_x;
@@ -60,11 +51,33 @@ void	map_mouse(t_env *env, double range_min, double range_max)
 
 int		mouse_move(int x, int y, t_env *env)
 {
+	static int	oldx = 0;
+	static int	oldy = 0;
+
 	if (x <= env->win_x && x >= 0
 		&& y <= env->win_y && y >= 0)
 	{
-		env->point_x = x * 1 / env->zoom;
-		env->point_y = y * 1 / env->zoom;
+		if (env->zoom == 1)
+		{
+			env->point_x = x;
+			env->point_y = y;
+		}
+		else 
+		{
+			printf("diff = %d\n", oldx - x);
+			if ((float)abs(oldx - x) >= env->zoom * 2.0)
+			{
+				env->point_x = (oldx - x > 0) ?
+					env->point_x - 1 : env->point_x + 1;
+				oldx = x;
+			}
+			if ((float)abs(oldy - y) >= env->zoom * 2.0)
+			{
+				env->point_y = (oldy - y > 0) ?
+					env->point_y - 1 : env->point_y + 1;
+				oldy = y;
+			}
+		}
 		map_mouse(env, -1.0F, 1.0F);
 		mlx_destroy_image(env->mlx, env->img.img);
 		env->img.img = mlx_new_image(env->mlx, env->win_x, env->win_y);
@@ -74,5 +87,5 @@ int		mouse_move(int x, int y, t_env *env)
 		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 		printf("x = %F, y = %F\n", env->mapped_point_x, env->mapped_point_y);
 	}
-	return 0;
+	return (0);
 }

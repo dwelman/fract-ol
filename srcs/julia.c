@@ -26,8 +26,8 @@ void	julia(t_env *env)
 
 //	c_real = -0.7;
 //	c_imag = 0.27015;
-	env->c_real = env->mapped_point_x; //* env->zoom;
-	env->c_imag = env->mapped_point_y; //* env->zoom;
+	env->c_real = env->mapped_point_x;
+	env->c_imag = env->mapped_point_y;
 	while (y < WIN_Y)
 	{
 		x = 0;
