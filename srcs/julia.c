@@ -12,8 +12,10 @@
 
 #include <fractol.h>
 
-void	julia(t_env *env)
+void	julia(t_fr_thread *t)
 {
+	ft_printf("a thread");
+	t_env	*env;
 	double	new_real;
 	double	new_imag;
 	double	old_real;
@@ -22,20 +24,22 @@ void	julia(t_env *env)
 	int		i;
 	int		max_iter = 255;
 	int		x = 0;
-	int		y = 0;
 
+	
+	env = t->env;
 //	c_real = -0.7;
 //	c_imag = 0.27015;
 	env->c_real = env->mapped_point_x;
 	env->c_imag = env->mapped_point_y;
-	while (y < WIN_Y)
+
+	while (t->y_s < t->y_e)
 	{
-		x = 0;
-		while (x < WIN_X)
+		x = t->x_s;
+		while (x < t->x_e)
 		{
 			//printf("y = %d, x = %d\n", y, x);
 			new_real = 1.5 * (x - WIN_X / 2) / (0.5 * env->zoom * WIN_X) + env->move_x;
-			new_imag = (y - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + env->move_y;
+			new_imag = (t->y_s - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + env->move_y;
 			//printf("new real = %f, new imag = %f\n", new_real, new_imag);
 			i = 0;
 			while (i < max_iter)
@@ -52,9 +56,9 @@ void	julia(t_env *env)
 			col.r = i % 256;
 			col.g = i % 256;
 			col.b = i % 256;
-			save_to_img(env, col, x, y);
+			save_to_img(env, col, x, t->y_s);
 			x++;
 		}
-		y++;
+		t->y_s++;
 	}
 }

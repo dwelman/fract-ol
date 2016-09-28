@@ -70,7 +70,7 @@ int		main(int argc, char **argv)
 
 	env.code = arg_check(argc, argv);
 	init_env(&env);
-	draw_fractal(&env);
+	make_threads(&env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_hook(env.win, 17, 0L, &close_window, &env);
