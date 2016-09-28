@@ -24,6 +24,8 @@
 # define SCROLL_DOWN 5
 # define MANDELBROT 1
 # define JULIA 2
+# define NO_THREADS 4
+
 
 
 typedef struct	s_col
@@ -76,17 +78,28 @@ typedef struct	s_env
 	int			lock_state;
 }				t_env;
 
+typedef struct	s_fr_thread
+{
+	int		x_s;
+	int		x_e;
+	int		y_s;
+	int		y_e;
+	t_env	*env;
+}				t_fr_thread;
+
+void			make_threads(t_env *env);
+
 void			redraw(t_env *env);
 
 void			map_mouse(t_env *env, double range_min, double range_max);
 
 int				mouse_move(int x, int y, t_env *env);
 
-void			draw_fractal(t_env *env);
+void			*draw_fractal(void *e);
 
 void			mandelbrot(t_env *env);
 
-void			julia(t_env *env);
+void			julia(t_fr_thread *t);
 
 int				key_hook(int key, t_env *env);
 
