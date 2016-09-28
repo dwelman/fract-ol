@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/28 10:32:12 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 15:26:38 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void			*draw_fractal(void *e);
 void			mandelbrot(t_env *env);
 
 void			julia(t_fr_thread *t);
+
+void			carpet(t_env *env);
 
 int				key_hook(int key, t_env *env);
 

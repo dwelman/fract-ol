@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 10:05:16 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 15:26:07 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		arg_check(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error: Usage - fractol [option]\n", 2);
-		ft_putstr_fd("\t1 - Mandelbrot\n\t2 - Julia\n", 2);
+		ft_putstr_fd("\t1 - Mandelbrot\n\t2 - Julia\n\t3 - Carpet\n", 2);
 		exit(-1);
 	}
 	else

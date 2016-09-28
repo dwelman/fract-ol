@@ -6,7 +6,7 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/27 09:57:05 by daviwel           #+#    #+#              #
-#    Updated: 2016/09/28 11:55:28 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/09/28 14:33:52 by daviwel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC_FILES = main.c \
 			mouse_hook.c \
 			mandelbrot.c \
 			julia.c \
+			carpet.c \
 			save_to_img.c \
 			redraw.c\
 
