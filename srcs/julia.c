@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 07:37:52 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 08:23:15 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/28 09:26:50 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	julia(t_env *env)
 {
-	double	c_real;
-	double	c_imag;
 	double	new_real;
 	double	new_imag;
 	double	old_real;
@@ -28,8 +26,8 @@ void	julia(t_env *env)
 	int		x = 0;
 	int		y = 0;
 
-	c_real = -0.7;
-	c_imag = 0.27015;
+	env->c_real = -0.7;
+	env->c_imag = 0.27015;
 	while (y < WIN_Y)
 	{
 		x = 0;
@@ -44,8 +42,8 @@ void	julia(t_env *env)
 			{
 				old_real = new_real;
 				old_imag = new_imag;
-				new_real = old_real * old_real - old_imag * old_imag + c_real;
-				new_imag = 2 * old_real * old_imag + c_imag;
+				new_real = old_real * old_real - old_imag * old_imag + env->c_real;
+				new_imag = 2 * old_real * old_imag + env->c_imag;
 				if ((new_real * new_real + new_imag * new_imag) > 4)
 					break;
 				i++;
