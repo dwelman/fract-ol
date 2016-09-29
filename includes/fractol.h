@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/29 09:00:59 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/29 09:09:04 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,6 @@ int				close_window(t_env *env);
 int				mouse_hook(int key, int x, int y, t_env *env);
 
 void			save_to_img(t_env *env, t_col col, int x, int y);
-
-t_col			HsvToRgb(double h, double S, double V);
 
 t_col			get_color(int n, t_env *env);
 
