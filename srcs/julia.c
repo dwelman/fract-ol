@@ -18,7 +18,7 @@ static int	iter_loop(t_env *env, t_frac frac)
 	int	max_iter;
 
 	i = 0;
-	max_iter = 500;
+	max_iter = MAX_ITER;
 	while (i < max_iter)
 	{
 		frac.old_real = frac.new_real;

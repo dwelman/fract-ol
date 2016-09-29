@@ -48,6 +48,8 @@ int		arg_check(int argc, char **argv)
 
 void	init_env(t_env *env)
 {
+	env->oldx = 0;
+	env->oldy = 0;
 	env->pal = 2;
 	env->color = 0;
 	env->zoom = 1;

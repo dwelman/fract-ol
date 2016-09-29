@@ -12,7 +12,7 @@
 
 #include <fractol.h>
 
-int	mouse_hook(int key, int x, int y, t_env *env)
+int		mouse_hook(int key, int x, int y, t_env *env)
 {
 	double	relx;
 	double	rely;
@@ -50,9 +50,6 @@ void	map_mouse(t_env *env, double range_min, double range_max)
 
 int		mouse_move(int x, int y, t_env *env)
 {
-	static int	oldx = 0;
-	static int	oldy = 0;
-
 	if (x <= env->win_x && x >= 0
 		&& y <= env->win_y && y >= 0 && !env->lock_state)
 	{
@@ -61,19 +58,17 @@ int		mouse_move(int x, int y, t_env *env)
 			env->point_x = x;
 			env->point_y = y;
 		}
-		else 
+		else
 		{
-			if ((float)abs(oldx - x) >= env->zoom * 2.0)
+			if ((float)abs(env->oldx - x) >= env->zoom * 2.0)
 			{
-				env->point_x = (oldx - x > 0) ?
-					env->point_x - 1 : env->point_x + 1;
-				oldx = x;
+				P_X = (env->oldx - x > 0) ? P_X - 1 : P_X + 1;
+				env->oldx = x;
 			}
-			if ((float)abs(oldy - y) >= env->zoom * 2.0)
+			if ((float)abs(env->oldy - y) >= env->zoom * 2.0)
 			{
-				env->point_y = (oldy - y > 0) ?
-					env->point_y - 1 : env->point_y + 1;
-				oldy = y;
+				P_Y = (env->oldy - y > 0) ? P_Y - 1 : P_Y + 1;
+				env->oldy = y;
 			}
 		}
 		map_mouse(env, -1.0F, 1.0F);

@@ -30,7 +30,10 @@
 # define T 17
 # define Y 16
 # define P 35
+# define P_X env->point_x
+# define P_Y env->point_y
 # define NO_THREADS 4
+# define MAX_ITER 255
 
 typedef struct	s_col
 {
@@ -92,6 +95,8 @@ typedef struct	s_env
 	int			lock_state;
 	int			color;
 	int			pal;
+	int			oldx;
+	int			oldy;
 }				t_env;
 
 typedef struct	s_fr_thread
