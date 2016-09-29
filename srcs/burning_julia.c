@@ -47,7 +47,7 @@ void	burning_julia(t_fr_thread *t)
 				i++;
 			}
 			//ft_printf("I = %d\n", i);
-			save_to_img(env, (t_col){i % 256, i % 256, i % 256}, x, t->y_s);
+			save_to_img(env, get_color(i, env), x, t->y_s);
 			x++;
 		}
 		t->y_s++;

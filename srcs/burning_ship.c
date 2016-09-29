@@ -18,7 +18,6 @@ void	burning_ship(t_fr_thread *t)
 	double	new_imag;
 	double	old_real;
 	double	old_imag;
-	t_col	col;
 	int		i;
 	int		max_iter = 255;
 	int		x;
@@ -32,11 +31,9 @@ void	burning_ship(t_fr_thread *t)
 		x = t->x_s;
 		while (x < t->x_e)
 		{
-			//printf("y = %d, x = %d\n", y, x);
 			p_real = 1.5 * (x - WIN_X / 2) / (0.5 * env->zoom * WIN_X) + env->move_x;
 			p_imag = (t->y_s - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + env->move_y;
 			new_real = new_imag = old_real = old_imag = 0;
-			//printf("new real = %f, new imag = %f\n", new_real, new_imag);
 			i = 0;
 			while (i < max_iter)
 			{
@@ -48,11 +45,7 @@ void	burning_ship(t_fr_thread *t)
 					break;
 				i++;
 			}
-			//ft_printf("I = %d\n", i);
-			col.r = i % 256;
-			col.g = i % 256;
-			col.b = i % 256;
-			save_to_img(env, col, x, t->y_s);
+			save_to_img(env, get_color(i, env), x, t->y_s);
 			x++;
 		}
 		t->y_s++;
