@@ -6,7 +6,7 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/27 09:57:05 by daviwel           #+#    #+#              #
-#    Updated: 2016/09/29 07:27:27 by daviwel          ###   ########.fr        #
+#    Updated: 2016/09/29 07:57:17 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_FILES = main.c \
 			julia.c \
 			burning_ship.c \
 			burning_julia.c \
+			get_color.c\
 			save_to_img.c \
 			redraw.c\
 

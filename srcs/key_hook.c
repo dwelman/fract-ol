@@ -14,6 +14,7 @@
 
 int	key_hook(int key, t_env *env)
 {
+	ft_printf("Key = %d\n", key);
 	if (key == EXIT)
 		exit(0);
 	if (key == LEFT)
@@ -32,6 +33,11 @@ int	key_hook(int key, t_env *env)
 	}
 	if (key == T)
 		env->lock_state = !env->lock_state;
+	if (key == Y)
+		env->color = !env->color;
+	if (key == P)
+		env->pal++;
+	ft_printf("pal = %d\n", env->pal);
 	redraw(env);
 	return (0);
 }

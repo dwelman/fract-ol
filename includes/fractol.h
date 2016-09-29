@@ -28,9 +28,9 @@
 # define DOWN 125
 # define R 15
 # define T 17
+# define Y 16
+# define P 35
 # define NO_THREADS 4
-
-
 
 typedef struct	s_col
 {
@@ -80,6 +80,8 @@ typedef struct	s_env
 	int			rel_y;
 	double		zoom;
 	int			lock_state;
+	int			color;
+	int			pal;
 }				t_env;
 
 typedef struct	s_fr_thread
@@ -116,5 +118,9 @@ int				close_window(t_env *env);
 int				mouse_hook(int key, int x, int y, t_env *env);
 
 void			save_to_img(t_env *env, t_col col, int x, int y);
+
+t_col			HsvToRgb(double h, double S, double V);
+
+t_col			get_color(int n, t_env *env);
 
 #endif
