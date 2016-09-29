@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 11:17:21 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 11:07:09 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/29 07:50:01 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	mouse_hook(int key, int x, int y, t_env *env)
 {
-	printf("BUTTON: %d\n", key);
-	double relx = x - (env->win_x / 2);
-	double rely = y - (env->win_y / 2);
+	double	relx;
+	double	rely;
+
+	relx = x - (env->win_x / 2);
+	rely = y - (env->win_y / 2);
 	if (key == SCROLL_DOWN)
 	{
 		env->zoom /= 1.2;
@@ -36,11 +38,14 @@ int	mouse_hook(int key, int x, int y, t_env *env)
 void	map_mouse(t_env *env, double range_min, double range_max)
 {
 	double range;
+
 	range = range_max - range_min;
 	if (range < 0)
 		range = 1.0F;
-	env->mapped_point_x = range_min + ((double)env->point_x / (double)env->win_x) * range;
-	env->mapped_point_y = range_min + ((double)env->point_y / (double)env->win_y) * range;
+	env->mapped_point_x = range_min + ((double)env->point_x
+			/ (double)env->win_x) * range;
+	env->mapped_point_y = range_min + ((double)env->point_y
+			/ (double)env->win_y) * range;
 }
 
 int		mouse_move(int x, int y, t_env *env)

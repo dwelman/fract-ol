@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 10:51:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 15:27:13 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/29 07:29:32 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	*draw_fractal(void *t)
 		julia((t_fr_thread*)t);
 	}
 	else if (temp->env->code == 3)
-		carpet(temp->env);
+		burning_ship((t_fr_thread*)t);
+	else if (temp->env->code == 4)
+		burning_julia((t_fr_thread*)t);
 	return (NULL);
 }
 

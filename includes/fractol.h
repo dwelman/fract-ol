@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/28 15:26:38 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/29 07:52:15 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@
 # define EXIT 53
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
-# define MANDELBROT 1
-# define JULIA 2
+# define LEFT 123
+# define RIGHT 124
+# define UP 126
+# define DOWN 125
+# define R 15
+# define T 17
 # define NO_THREADS 4
 
 
@@ -101,7 +105,9 @@ void			mandelbrot(t_fr_thread *t);
 
 void			julia(t_fr_thread *t);
 
-void			carpet(t_env *env);
+void			burning_ship(t_fr_thread *t);
+
+void			burning_julia(t_fr_thread *t);
 
 int				key_hook(int key, t_env *env);
 

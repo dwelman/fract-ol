@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/28 15:26:07 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/29 07:50:29 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ int		arg_check(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error: Usage - fractol [option]\n", 2);
-		ft_putstr_fd("\t1 - Mandelbrot\n\t2 - Julia\n\t3 - Carpet\n", 2);
+		ft_putstr_fd("\t1 - Mandelbrot\n\t2 - Julia\n\t3 - Burning ship\n", 2);
+		ft_putstr_fd("\t4 - Burning Julia\n", 2);
 		exit(-1);
 	}
 	else
 	{
 		ret = ft_atoi(argv[1]);
-		if (ret > 0 && ret < 4)
+		if (ret > 0 && ret < 5)
 		{
 			return (ret);
 		}
@@ -74,7 +75,7 @@ int		main(int argc, char **argv)
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_hook(env.win, 17, 0L, &close_window, &env);
-	mlx_hook(env.win, 6, 1L<<6, &mouse_move, &env);
+	mlx_hook(env.win, 6, 1L << 6, &mouse_move, &env);
 	mlx_mouse_hook(env.win, &mouse_hook, &env);
 	mlx_loop(env.mlx);
 	return (0);
