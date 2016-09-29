@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/29 07:52:15 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/29 08:39:13 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ typedef struct	s_col
 	float	g;
 	float	b;
 }				t_col;
+
+typedef struct	s_frac
+{
+	double	new_real;
+	double	old_real;
+	double	new_imag;
+	double	old_imag;
+	int		max_iter;
+}				t_frac;
 
 typedef struct	s_img
 {
