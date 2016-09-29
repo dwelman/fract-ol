@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 09:38:04 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/29 08:39:13 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/29 09:00:59 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef struct	s_frac
 	double	old_real;
 	double	new_imag;
 	double	old_imag;
-	int		max_iter;
+	double	p_imag;
+	double	p_real;
 }				t_frac;
 
 typedef struct	s_img

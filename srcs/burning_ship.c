@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   burning_ship.c                                     :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/29 07:11:03 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/29 07:41:14 by daviwel          ###   ########.fr       */
+/*   Created: 2016/09/28 09:47:15 by daviwel           #+#    #+#             */
+/*   Updated: 2016/09/29 09:07:13 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	burning_ship(t_fr_thread *t)
+static int	iter_loop(t_frac frac)
 {
-	double	new_real;
-	double	new_imag;
-	double	old_real;
-	double	old_imag;
+	int	i;
+	int	max_iter;
+
+	i = 0;
+	max_iter = 500;
+	while (i < max_iter)
+	{
+		frac.old_real = fabs(frac.new_real);
+		frac.old_imag = fabs(frac.new_imag);
+		frac.new_real = frac.old_real * frac.old_real - frac.old_imag
+			* frac.old_imag + frac.p_real;
+		frac.new_imag = 2 * frac.old_real * frac.old_imag + frac.p_imag;
+		if ((frac.new_real * frac.new_real + frac.new_imag * frac.new_imag) > 4)
+			break ;
+		i++;
+	}
+	return (i);
+}
+
+void		burning_ship(t_fr_thread *t)
+{
+	t_frac	frac;
 	int		i;
-	int		max_iter = 255;
 	int		x;
-	double	p_real;
-	double	p_imag;
 	t_env	*env;
 
 	env = t->env;
@@ -31,20 +46,15 @@ void	burning_ship(t_fr_thread *t)
 		x = t->x_s;
 		while (x < t->x_e)
 		{
-			p_real = 1.5 * (x - WIN_X / 2) / (0.5 * env->zoom * WIN_X) + env->move_x;
-			p_imag = (t->y_s - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y) + env->move_y;
-			new_real = new_imag = old_real = old_imag = 0;
-			i = 0;
-			while (i < max_iter)
-			{
-				old_real = fabs(new_real);
-				old_imag = fabs(new_imag);
-				new_real = old_real * old_real - old_imag * old_imag + p_real;
-				new_imag = 2 * old_real * old_imag + p_imag;
-				if ((new_real * new_real + new_imag * new_imag) > 4)
-					break;
-				i++;
-			}
+			frac.p_real = 1.5 * (x - WIN_X / 2) / (0.5 * env->zoom * WIN_X)
+				+ env->move_x;
+			frac.p_imag = (t->y_s - WIN_Y / 2) / (0.5 * env->zoom * WIN_Y)
+				+ env->move_y;
+			frac.new_real = 0;
+			frac.new_imag = 0;
+			frac.old_real = 0;
+			frac.old_imag = 0;
+			i = iter_loop(frac);
 			save_to_img(env, get_color(i, env), x, t->y_s);
 			x++;
 		}
