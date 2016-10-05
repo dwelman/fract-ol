@@ -22,14 +22,14 @@ int		mouse_hook(int key, int x, int y, t_env *env)
 	if (key == SCROLL_DOWN)
 	{
 		env->zoom /= 1.2;
-		env->move_x -= relx / ((env->win_x) * (env->zoom / 2));
-		env->move_y -= rely / ((env->win_y) * (env->zoom / 2));
+		env->move_x -= 0.625 * (relx / ((env->win_x) * (env->zoom)));
+		env->move_y -= 0.625 * (rely / ((env->win_y) * (env->zoom)));
 	}
 	else if (key == SCROLL_UP)
 	{
 		env->zoom *= 1.2;
-		env->move_x += relx / (env->win_x * env->zoom);
-		env->move_y += rely / (env->win_y * env->zoom);
+		env->move_x += 0.625 * (relx / (env->win_x * env->zoom));
+		env->move_y += 0.625 * (rely / (env->win_y * env->zoom));
 	}
 	redraw(env);
 	return (0);

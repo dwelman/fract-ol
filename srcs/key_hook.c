@@ -12,6 +12,11 @@
 
 #include <fractol.h>
 
+int	close_window(void)
+{
+	exit(0);
+}
+
 int	key_hook(int key, t_env *env)
 {
 	if (key == EXIT)
@@ -34,8 +39,6 @@ int	key_hook(int key, t_env *env)
 		env->lock_state = !env->lock_state;
 	if (key == Y)
 		env->color = !env->color;
-	if (key == P)
-		env->pal++;
 	redraw(env);
 	return (0);
 }

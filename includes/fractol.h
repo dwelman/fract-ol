@@ -17,6 +17,7 @@
 # include <math.h>
 # include <libft.h>
 # include <pthread.h>
+# include <float.h>
 # define WIN_X 640
 # define WIN_Y 640
 # define EXIT 53
@@ -94,7 +95,6 @@ typedef struct	s_env
 	double		zoom;
 	int			lock_state;
 	int			color;
-	int			pal;
 	int			oldx;
 	int			oldy;
 }				t_env;
@@ -128,7 +128,7 @@ void			burning_julia(t_fr_thread *t);
 
 int				key_hook(int key, t_env *env);
 
-int				close_window(t_env *env);
+int				close_window(void);
 
 int				mouse_hook(int key, int x, int y, t_env *env);
 

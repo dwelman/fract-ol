@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/29 07:50:29 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/30 14:01:32 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		expose(t_env *env)
 {
 	if (env->win && env->img.img)
 	{
-		ft_printf("exposing");
 		mlx_clear_window(0, env->win);
 		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	}
@@ -50,7 +49,6 @@ void	init_env(t_env *env)
 {
 	env->oldx = 0;
 	env->oldy = 0;
-	env->pal = 2;
 	env->color = 0;
 	env->zoom = 1;
 	env->move_x = 0;
